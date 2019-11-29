@@ -1,0 +1,106 @@
+﻿<Page x:Class="WholeWeek.Views.NewOrderView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WholeWeek.Views"
+      mc:Ignorable="d" 
+      Background="SlateGray"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewOrderView">
+
+    <Page.Resources>
+        <ResourceDictionary Source="Styles.xaml" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="1" Grid.Column="4">Recipient name</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="4"
+                 Height="40" Width="200" Text="{Binding Recipient}"
+                 VerticalAlignment="Top" HorizontalAlignment="Left"></TextBox>
+
+        <TextBlock Grid.Row="3" Grid.Column="4">Select table</TextBlock>
+        <ComboBox Grid.Row="4" Grid.Column="4"
+                 Height="40" Width="200" ItemsSource="{Binding Tables}"
+                 DisplayMemberPath="Name" SelectedItem="{Binding SelectedTable}"
+                 VerticalAlignment="Top" HorizontalAlignment="Left"></ComboBox>
+
+        <TextBlock Grid.Row="1" Grid.Column="1">Sausage</TextBlock>
+        <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="4">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton IsChecked="{Binding Boiled}" Style="{StaticResource radiobutton}" >
+                    <TextBlock>Boiled</TextBlock>
+                </RadioButton>
+                <RadioButton IsChecked="{Binding Fried}" Style="{StaticResource radiobutton}" >
+                    <TextBlock>Fried</TextBlock>
+                </RadioButton>
+                <RadioButton IsChecked="{Binding XLFried}" Style="{StaticResource radiobutton}" >
+                    <TextBlock>XLFried</TextBlock>
+                </RadioButton>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Grid.Row="3" Grid.Column="1">Liquid Condiments</TextBlock>
+        <Border Grid.Row="4" Grid.Column="1" BorderBrush="Black" BorderThickness="4">
+            <StackPanel Orientation="Horizontal">
+                <ToggleButton IsChecked="{Binding Mustard}" Style="{StaticResource optionbutton}" >
+                    <TextBlock>Mustard</TextBlock>
+                </ToggleButton>
+                <ToggleButton IsChecked="{Binding Ketchup}" Style="{StaticResource optionbutton}" >
+                    <TextBlock>Ketchup</TextBlock>
+                </ToggleButton>
+                <ToggleButton IsChecked="{Binding Remoulade}" Style="{StaticResource optionbutton}" >
+                    <TextBlock>Remoulade</TextBlock>
+                </ToggleButton>
+            </StackPanel>
+        </Border>
+
+        <TextBlock Grid.Row="5" Grid.Column="1">Solid Condiments</TextBlock>
+        <Border Grid.ColumnSpan="2" Grid.Row="6" Grid.Column="1" BorderBrush="Black" BorderThickness="4">
+            <StackPanel Orientation="Horizontal" >
+                <ToggleButton IsChecked="{Binding RoastedOnion}" Style="{StaticResource optionbutton}" >
+                    <TextBlock>RoastedOnion</TextBlock>
+                </ToggleButton>
+                <ToggleButton IsChecked="{Binding RawOnion}" Style="{StaticResource optionbutton}" >
+                    <TextBlock>RawOnion</TextBlock>
+                </ToggleButton>
+                <ToggleButton IsChecked="{Binding PickledOnion}" Style="{StaticResource optionbutton}" >
+                    <TextBlock>PickledOnion</TextBlock>
+                </ToggleButton>
+                <ToggleButton IsChecked="{Binding CucumberSalad}" Style="{StaticResource optionbutton}" >
+                    <TextBlock TextAlignment="Center" TextWrapping="Wrap">Cucumber Salad</TextBlock>
+                </ToggleButton>
+            </StackPanel>
+        </Border>
+
+        <StackPanel  Grid.Column="1" Grid.Row="7" Orientation="Horizontal">
+            <Button Click="CreateOrder" Margin="5" Background="ForestGreen" Style="{StaticResource button}">
+                Create order
+            </Button>
+            <Button Click="CancelOrder" Background="Red" Margin="5" Style="{StaticResource button}">
+                Cancel
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
